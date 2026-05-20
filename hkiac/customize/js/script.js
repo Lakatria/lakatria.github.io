@@ -20,7 +20,7 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
         const { data: { session }, error } = await supabaseClient.auth.getSession();
         
         if (!session) {
-            window.location.href = "../login/index.html";
+            window.location.href = "../login/";
             return;
         }
 
@@ -104,7 +104,7 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
             messageEl.style.color = "green";
             messageEl.innerText = "Looking cute! Redirecting...";
             setTimeout(() => {
-                window.location.href = "../index.html";
+                window.location.href = "../";
             }, 1000);
         }
     }

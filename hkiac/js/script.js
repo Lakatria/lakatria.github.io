@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', async () => {
                 </div>
                 
                 <div class="dropdown-menu" id="profile-dropdown">
-                    <a href="customize/index.html" class="dropdown-item">Customize</a>
+                    <a href="customize/" class="dropdown-item">Customize</a>
                     <button class="dropdown-item" onclick="signOut()">Sign Out</button>
                 </div>
             </div>

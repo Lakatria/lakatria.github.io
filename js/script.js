@@ -9,7 +9,7 @@ const projects = {
   "2": { 
     title: "Hello Kitty Island Adventure Companion App", 
     desc: "My first HTML based project! This app is a simple web application that allows users to track and manage their daily activities and tasks effectively. Also contains a Supabase backend for data storage, such as saving user progress, preferences, and changelog information.", 
-    github: "hkiac/index.html",
+    github: "hkiac/",
     btnText: "Open Website",
     image: "media/project2.png" 
   },

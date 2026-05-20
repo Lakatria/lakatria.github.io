@@ -7,7 +7,7 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
     window.addEventListener('DOMContentLoaded', async () => {
         const { data: { session } } = await supabaseClient.auth.getSession();
         if (session) {
-            window.location.href = "../index.html";
+            window.location.href = "../";
         }
     });
 
@@ -66,7 +66,7 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
             } else {
                 messageEl.style.color = "green";
                 messageEl.innerText = "Welcome! Redirecting...";
-                setTimeout(() => { window.location.href = "../customize/index.html"; }, 1500);
+                setTimeout(() => { window.location.href = "../customize/"; }, 1500);
             }
         } catch (err) {
             console.error("Unexpected error:", err);
@@ -98,7 +98,7 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
         } else {
             messageEl.style.color = "green";
             messageEl.innerText = "Success! Redirecting...";
-            setTimeout(() => { window.location.href = "../index.html"; }, 1000);
+            setTimeout(() => { window.location.href = "../"; }, 1000);
         }
     }
 
@@ -106,7 +106,7 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
         const { data, error } = await supabaseClient.auth.signInWithOAuth({
             provider: provider,
             options: {
-                redirectTo: new URL('../index.html', window.location.href).href 
+                redirectTo: new URL('../', window.location.href).href 
             }
         });
         
