@@ -1,0 +1,263 @@
+:root { 
+  --bg: #0f172a; 
+  --card: #1e293b; 
+  --text: #f8fafc; 
+  --accent: #38bdf8; 
+}
+
+* { box-sizing: border-box; }
+
+body { 
+  font-family: system-ui, -apple-system, sans-serif; 
+  background: var(--bg); 
+  color: var(--text); 
+  margin: 0; 
+  overflow-x: hidden; 
+}
+
+header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 2rem 5%; 
+}
+
+.header-btn { 
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--card);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  text-decoration: none; 
+  color: var(--text); 
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.header-btn:hover {
+  background: #334155;
+}
+
+.github-icon { 
+  width: 1.2rem; 
+  height: 1.2rem;
+  fill: var(--text); 
+}
+
+.info-icon { 
+  color: var(--accent); 
+  font-size: 1.1rem;
+}
+
+main { padding: 0 5% 2rem 5%; }
+
+.page-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 3rem;
+}
+
+.grid { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: 2rem; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.project-card { 
+  border-radius: 12px; 
+  height: 250px; 
+  padding: 1.5rem; 
+  cursor: pointer; 
+  transition: transform 0.2s ease, box-shadow 0.2s ease; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--card);
+  background-size: cover;
+  background-position: center;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.1) 100%);
+  z-index: 1;
+}
+
+.project-card:hover { 
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4); 
+}
+
+.project-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.project-card h3 { margin: 0 0 0.5rem 0; font-size: 1.25rem; }
+.project-card p { margin: 0; color: #cbd5e1; font-size: 0.95rem; }
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--card); 
+  z-index: 100; 
+  transition: opacity 0.4s ease;
+  pointer-events: none; 
+  opacity: 0; 
+  overflow: hidden; 
+}
+
+#overlay.active { 
+  pointer-events: auto; 
+  opacity: 1; 
+}
+
+.overlay-content { 
+  padding: 3rem 5%; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  opacity: 0; 
+  transition: opacity 0.4s ease; 
+  display: none; 
+  height: 100vh;
+  overflow-y: auto;
+}
+
+#overlay.active .overlay-content { 
+  opacity: 1; 
+  display: block; 
+}
+
+.overlay-split {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: flex-start;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .overlay-split { flex-direction: row; }
+}
+
+.overlay-image-container {
+  flex: 1;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.overlay-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.overlay-text-container {
+  flex: 1;
+}
+
+.back-btn { 
+  background: none; 
+  border: none; 
+  color: var(--accent); 
+  font-size: 1.1rem; 
+  cursor: pointer; 
+  padding: 0; 
+  margin-bottom: 2rem; 
+  font-weight: bold; 
+}
+
+.back-btn:hover { text-decoration: underline; }
+
+.project-desc {
+  color: #cbd5e1; 
+  line-height: 1.7; 
+  margin-top: 1.5rem; 
+  font-size: 1.1rem;
+}
+
+.project-links { margin-top: 3rem; }
+
+.project-links a { 
+  background: var(--accent); 
+  color: #0f172a; 
+  padding: 0.8rem 1.5rem; 
+  border-radius: 6px; 
+  text-decoration: none; 
+  font-weight: bold; 
+  display: inline-block;
+}
+
+.fade-out {
+  opacity: 0 !important;
+  transition: opacity 0.4s ease;
+  pointer-events: none; 
+}
+
+#about-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--bg); 
+  z-index: 150; 
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  transition: opacity 0.5s ease; 
+}
+
+#about-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.about-content {
+  padding: 3rem 5%; 
+  max-width: 800px; 
+  margin: 0 auto; 
+  height: 100vh;
+  overflow-y: auto;
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cascade-text {
+  opacity: 0; 
+  animation: fade-in-down 0.6s ease forwards;
+}
+
+.cascade-text[data-delay="0"] { animation-delay: 0.1s; }
+.cascade-text[data-delay="1"] { animation-delay: 0.3s; }
+.cascade-text[data-delay="2"] { animation-delay: 0.5s; }
+.cascade-text[data-delay="3"] { animation-delay: 0.7s; }

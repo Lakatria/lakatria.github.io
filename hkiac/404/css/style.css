@@ -1,0 +1,96 @@
+:root {
+            --pink-main: #ff8bba;
+            --pink-light: #ffb6c1;
+            --pink-bg: #ffeef8;
+        }
+
+        body {
+            font-family: 'Gamja Flower', cursive;
+            background-color: var(--pink-bg);
+            color: #555;
+            text-align: center;
+            font-size: 22px;
+            margin: 0;
+            padding: 20px;
+            /* This centers the error box perfectly in the middle of the screen */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .error-container {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 25px;
+            border: 3px solid var(--pink-light);
+            box-shadow: 0 10px 25px rgba(255, 139, 186, 0.15);
+            max-width: 450px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .lost-icon {
+            font-size: 3.5em;
+            display: block;
+            margin-bottom: -15px;
+        }
+
+        h1 {
+            color: var(--pink-main);
+            text-shadow: 3px 3px #fff;
+            font-size: 6em;
+            margin: 0;
+            line-height: 1;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h2 {
+            color: #ff4d88;
+            font-size: 1.8em;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #777;
+            line-height: 1.3;
+        }
+
+        .home-btn {
+            background: var(--pink-main);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 15px;
+            font-family: 'Gamja Flower', cursive;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-btn:hover {
+            background: #ff7aa9;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 139, 186, 0.3);
+        }
+
+        .home-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }

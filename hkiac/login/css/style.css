@@ -1,0 +1,123 @@
+:root {
+            --pink-main: #ff8bba;
+            --pink-light: #ffb6c1;
+            --pink-bg: #ffeef8;
+        }
+
+        body { 
+            font-family: 'Gamja Flower', cursive; 
+            background-color: var(--pink-bg); 
+            color: #555; 
+            text-align: center; 
+            font-size: 22px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .auth-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid var(--pink-main);
+            width: 320px;
+            box-shadow: 0 4px 10px rgba(255, 139, 186, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        h1 { 
+            color: var(--pink-main); 
+            font-size: 2em;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 0.9em; 
+            margin-bottom: 20px;
+            color: #777;
+        }
+
+        .input-group {
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .auth-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid var(--pink-light);
+            font-family: 'Gamja Flower', cursive;
+            font-size: 1.1em;
+            box-sizing: border-box;
+            outline: none;
+            color: #555;
+            transition: border-color 0.2s;
+        }
+
+        .auth-input:focus { border-color: var(--pink-main); }
+
+        .btn-primary {
+            background: var(--pink-main);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-family: 'Gamja Flower', cursive;
+            font-size: 1.2em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover { transform: scale(1.05); }
+
+        .social-btn {
+            background: #fafafa;
+            border: 2px dashed #aaa;
+            color: #555;
+            padding: 8px;
+            border-radius: 10px;
+            font-family: 'Gamja Flower', cursive;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 8px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .social-btn:hover {
+            border-color: var(--pink-main);
+            color: var(--pink-main);
+        }
+
+        .toggle-link {
+            color: var(--pink-main);
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.9em;
+            display: block;
+            margin-top: 10px;
+        }
+
+        #message {
+            font-size: 0.9em;
+            margin-top: 10px;
+            color: #ff4d88;
+            min-height: 20px;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: var(--pink-light);
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .hidden { display: none; }

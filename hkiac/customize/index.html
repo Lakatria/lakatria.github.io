@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize - Hello Kitty Island Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div class="customize-container">
+    <h1>Customize</h1>
+    <div class="layout-split">
+        <div class="preview-section">
+            <img id="preview-image" class="preview-img" src="" alt="Profile Preview">
+            <div class="name-edit-container">
+                <input type="text" id="preview-name" class="preview-username" value="Loading..." maxlength="20">
+                <span class="edit-hint">✏️</span>
+            </div>
+        </div>
+        <div class="options-section" id="icon-grid">
+            </div>
+    </div>
+    <button class="btn-done" onclick="saveCustomization()">Done!</button>
+    <p id="message"></p>
+</div>
+<div class="modal-overlay" id="custom-image-modal">
+    <div class="modal">
+        <h3>Custom Avatar 📷</h3>
+        <input type="file" id="file-upload" accept="image/*" style="display: none;" onchange="handleFileUpload(event)">
+        <button class="btn-primary" onclick="document.getElementById('file-upload').click()" style="width: 100%;">Choose File</button>
+        <div class="modal-divider">- or -</div>
+        <input type="text" id="image-url-input" class="url-input" placeholder="Enter image url...">
+        <button class="btn-primary" onclick="handleUrlUpload()" style="width: 100%; background: var(--pink-light);">Apply URL</button>
+        <button class="btn-text-only" onclick="closeModal('custom-image-modal')">Cancel</button>
+    </div>
+</div>
+    <script src="js/script.js"></script>
+</body>
+</html>

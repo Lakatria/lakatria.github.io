@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hello Kitty Island Companion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<div class="auth-container">
+    <h1>Hello Kitty Island Companion</h1>
+    <p class="subtitle" id="form-subtitle">Sign in to save your progress!</p>
+    <div id="signin-view">
+        <div class="input-group">
+            <input type="email" id="signin-email" class="auth-input" placeholder="Email Address">
+        </div>
+        <div class="input-group">
+            <input type="password" id="signin-password" class="auth-input" placeholder="Password">
+        </div>
+        <button class="btn-primary" onclick="handleSignIn()">Sign In</button>
+        <span class="toggle-link" onclick="toggleView('signup')">New here? Create an account!</span>
+        <hr style="border: 1px solid var(--pink-bg); margin: 15px 0;">
+        <button class="social-btn" onclick="signInWithOAuth('google')">Sign in with Google</button>
+        <button class="social-btn" onclick="signInWithOAuth('discord')">Sign in with Discord</button>
+    </div>
+    <div id="signup-view" class="hidden">
+        <div class="input-group">
+            <input type="text" id="signup-username" class="auth-input" placeholder="Username">
+        </div>
+        <div class="input-group">
+            <input type="email" id="signup-email" class="auth-input" placeholder="Email Address">
+        </div>
+        <div class="input-group">
+            <input type="password" id="signup-password" class="auth-input" placeholder="Password">
+        </div>
+        <div class="input-group">
+            <input type="password" id="signup-confirm" class="auth-input" placeholder="Confirm Password">
+        </div>
+        <button class="btn-primary" onclick="handleSignUp()">Create Account</button>
+        <span class="toggle-link" onclick="toggleView('signin')">Already have an account? Sign in.</span>
+    </div>
+    <p id="message"></p>
+    <a href="../index.html" class="back-link">← Back</a>
+</div>
+    <script src="js/script.js"></script>
+</body>
+</html>

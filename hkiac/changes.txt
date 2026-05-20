@@ -1,0 +1,3 @@
+1. moved to github pages
+2. added moving background to resemble game menus
+3. 

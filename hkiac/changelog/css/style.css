@@ -1,0 +1,120 @@
+:root {
+            --pink-main: #ff8bba;
+            --pink-light: #ffb6c1;
+            --pink-bg: #ffeef8;
+        }
+
+        body {
+            font-family: 'Gamja Flower', cursive;
+            background-color: var(--pink-bg);
+            color: #555;
+            text-align: center;
+            font-size: 22px;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: var(--pink-main);
+            text-shadow: 2px 2px #fff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .back-btn {
+            background: #fff;
+            color: var(--pink-main);
+            border: 2px solid var(--pink-light);
+            padding: 8px 20px;
+            border-radius: 15px;
+            font-family: 'Gamja Flower', cursive;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        .back-btn:hover {
+            background: var(--pink-light);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .changelog-container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .log-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            border: 3px solid var(--pink-light);
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(255, 139, 186, 0.1);
+            animation: fadeIn 0.4s ease-out forwards;
+            opacity: 0;
+        }
+
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px dashed var(--pink-bg);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .version-badge {
+            background: var(--pink-main);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .date-text {
+            color: #aaa;
+            font-size: 0.9em;
+        }
+
+        .log-content {
+            font-size: 1.1em;
+            line-height: 1.4;
+            color: #666;
+            white-space: pre-wrap;
+        }
+
+        .log-divider {
+            height: 2px;
+            background-color: var(--pink-bg);
+            border: none;
+            margin: 15px 0;
+            width: 100%;
+        }
+
+        .loading-text {
+            color: var(--pink-light);
+            font-size: 1.5em;
+            animation: pulse 1.5s infinite;
+        }
+        
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }

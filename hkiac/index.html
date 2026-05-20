@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Kitty Island Adventure Companion</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div id="auth-corner">
+    <a href="login/index.html" class="sign-in-btn">Sign In</a>
+</div>
+    
+<h1>Hello Kitty Island Adventure</h1>
+<h1>Companion</h1>
+
+<div class="tabs">
+    <div class="tab active" onclick="showTab('gifts')">Gifts</div>
+    <div class="tab" onclick="showTab('tasks')">Tasks</div>
+    <div class="tab" onclick="showTab('items')">Items</div>
+</div>
+
+<div id="gifts" class="content active">
+    <h3>Daily Gifts</h3>
+    <button class="btn-secondary" style="margin-bottom: 20px; font-size: 0.9em;" onclick="uncheckAllGifts()">⟲ Uncheck All</button>
+    <div class="item-grid" id="gifts-grid">
+        <div class="add-box square" id="add-char-btn" onclick="openCharModal()">
+            <span>+</span>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="custom-alert-modal" style="z-index: 2000;">
+    <div class="modal" style="text-align: center; width: 250px;">
+        <h3>Uh oh!</h3>
+        <p id="custom-alert-text" style="color: #777; margin-bottom: 20px; font-size: 1.1em;"></p>
+        <button class="btn-primary" onclick="closeModal('custom-alert-modal')" style="width: 100%;">Ok</button>
+    </div>
+</div>
+
+<div id="tasks" class="content">
+    <h3>My Checklist</h3>
+    <div class="task-list" id="task-list"></div>
+    
+    <div class="task-list">
+        <div class="add-box" id="add-task-btn" onclick="openTaskInput()">
+            <span>+</span>
+        </div>
+        
+        <div class="task-input-area" id="task-input-area">
+            <input type="text" class="task-input" id="new-task-input" placeholder="Type a task...">
+            <button class="task-add-btn" onclick="submitNewTask()">Add</button>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 30px; color: var(--pink-light);">Completed</h3>
+    <div class="task-list" id="completed-list"></div>
+</div>
+
+<div id="items" class="content">
+    <h3>Item Tracker</h3>
+    <div class="item-grid" id="tracker-grid">
+        <div class="add-box square" id="add-item-btn" onclick="openItemSearchModal()">
+            <span>+</span>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" id="item-search-modal">
+    <div class="modal search-modal">
+        <h3>Search Items</h3>
+        
+        <div class="subtabs">
+            <button class="subtab active-subtab" id="tab-materials" onclick="switchSearchTab('materials')">Materials</button>
+            <button class="subtab" id="tab-critters" onclick="switchSearchTab('critters')">Critters</button>
+            <button class="subtab" id="tab-fish" onclick="switchSearchTab('fish')">Fish</button>
+        </div>
+
+        <div class="search-bar-container">
+            <input type="text" id="item-search-input" class="search-input" placeholder="Enter item name..">
+            <button class="search-btn" onclick="performSearch()">🔍</button>
+        </div>
+
+        <div class="search-results-grid" id="search-results-container"></div>
+
+        <button class="btn-secondary" style="margin-top: 15px; width: 100%;" onclick="closeModal('item-search-modal')">Close</button>
+    </div>
+</div>
+
+<div class="modal-overlay" id="char-modal">
+    <div class="modal">
+        <h3>Add a new character:</h3>
+        <p>(Names are CASE SENSITIVE)</p>
+        <input type="text" id="new-char-input" class="char-input" placeholder="Enter name here..">
+        <div class="modal-btn-row">
+            <button class="btn-secondary" onclick="closeModal('char-modal')">Cancel</button>
+            <button class="btn-primary" onclick="submitNewCharacter()">Add</button>
+        </div>
+    </div>
+</div>
+
+<a href="https://lakatria.github.io/" target="_blank" class="credit-link">Created by Lakatria</a>
+
+<a href="changelog/index.html" class="changelog-link">
+    <div class="blinking-dot"></div>
+    Version 1.2.0
+</a>
+
+<a href="https://ko-fi.com/lakatria" target="_blank" class="kofi-btn" title="Support Me">
+    <img src="https://storage.ko-fi.com/cdn/logomarkLogo.png" alt="Ko-fi Logo" class="kofi-icon">
+    Support Me
+</a>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>

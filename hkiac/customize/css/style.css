@@ -1,0 +1,241 @@
+:root {
+            --pink-main: #ff8bba;
+            --pink-light: #ffb6c1;
+            --pink-bg: #ffeef8;
+        }
+
+        body { 
+            font-family: 'Gamja Flower', cursive; 
+            background-color: var(--pink-bg); 
+            color: #555; 
+            text-align: center; 
+            font-size: 22px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .customize-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            border: 3px solid var(--pink-main);
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(255, 139, 186, 0.2);
+        }
+
+        h1 { 
+            color: var(--pink-main); 
+            font-size: 2.5em;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px #fff;
+        }
+
+        .layout-split {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .preview-section {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--pink-bg);
+            padding: 20px;
+            border-radius: 20px;
+            border: 2px dashed var(--pink-light);
+        }
+
+        .preview-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            object-fit: contain; 
+            padding: 5px; 
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .name-edit-container {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .preview-username {
+            font-size: 1.8em;
+            color: var(--pink-main);
+            font-weight: bold;
+            margin: 0;
+            background: transparent;
+            border: 2px dashed transparent;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            font-family: 'Gamja Flower', cursive;
+            transition: all 0.2s ease;
+            outline: none;
+            padding: 2px 5px;
+            box-sizing: border-box;
+        }
+
+        .preview-username:hover, .preview-username:focus {
+            border-color: var(--pink-light);
+            background: #fff;
+        }
+
+        .edit-hint {
+            position: absolute;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--pink-light);
+            font-size: 1.2em;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .options-section {
+            flex: 2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 450px;
+        }
+
+        .icon-option {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: #fafafa;
+        }
+
+        .icon-option:hover {
+            transform: scale(1.1);
+            border-color: var(--pink-light);
+        }
+
+        .icon-option.selected {
+            border-color: var(--pink-main);
+            background-color: var(--pink-bg);
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(255, 139, 186, 0.4);
+        }
+
+        .btn-done {
+            background: var(--pink-main);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-family: 'Gamja Flower', cursive;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 10px rgba(255, 139, 186, 0.3);
+        }
+
+        .btn-done:hover {
+            transform: scale(1.05);
+            background: #ff7aa9;
+        }
+
+        .camera-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: #aaa;
+            background: #fff;
+            border: 2px dashed #aaa;
+        }
+
+        .camera-btn:hover {
+            color: var(--pink-main);
+            border-color: var(--pink-main);
+            background: #fafafa;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal {
+            background: #fff;
+            padding: 25px;
+            border-radius: 20px;
+            border: 3px solid var(--pink-main);
+            width: 280px;
+            text-align: center;
+        }
+
+        .modal h3 {
+            color: var(--pink-main);
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .modal-divider {
+            margin: 15px 0;
+            color: #aaa;
+            font-size: 1.1em;
+        }
+
+        .url-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid var(--pink-light);
+            font-family: 'Gamja Flower', cursive;
+            font-size: 1em;
+            box-sizing: border-box;
+            outline: none;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .url-input:focus { border-color: var(--pink-main); }
+        
+        .btn-text-only {
+            background: transparent;
+            border: none;
+            color: #aaa;
+            font-family: 'Gamja Flower', cursive;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: color 0.2s;
+        }
+        .btn-text-only:hover { color: var(--pink-main); }
+
+        #message {
+            margin-top: 15px;
+            font-size: 1.1em;
+        }
