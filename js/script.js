@@ -1,3 +1,70 @@
+const dvdDownloadBtn = document.getElementById('dvd-download');
+let isDvdActive = false;
+
+dvdDownloadBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  
+  if (isDvdActive) {
+    isDvdActive = false;
+    const activeDvd = document.getElementById('dvd-logo');
+    if (activeDvd) activeDvd.remove();
+    return;
+  }
+  isDvdActive = true;
+
+  const dvd = document.createElement('div');
+  dvd.id = 'dvd-logo';
+  dvd.style.width = '116px';
+  dvd.style.height = '52px';
+  dvd.style.webkitMaskImage = "url('media/dvd.png')";
+  dvd.style.maskImage = "url('media/dvd.png')";
+  dvd.style.webkitMaskSize = "contain";
+  dvd.style.maskSize = "contain";
+  dvd.style.webkitMaskRepeat = "no-repeat";
+  dvd.style.maskRepeat = "no-repeat";
+  document.body.appendChild(dvd);
+
+  const logoWidth = 116;
+  const logoHeight = 52;
+  let x = Math.random() * (window.innerWidth - logoWidth);
+  let y = Math.random() * (window.innerHeight - logoHeight);
+  let dx = 1;
+  let dy = 1;
+  
+  const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF'];
+  let colorIndex = 0;
+  dvd.style.backgroundColor = colors[colorIndex];
+
+  function animateDvd() {
+    if (!isDvdActive) return;
+
+    let hitWall = false;
+
+    if (x + logoWidth >= window.innerWidth || x <= 0) {
+      dx = -dx;
+      hitWall = true;
+    }
+    if (y + logoHeight >= window.innerHeight || y <= 0) {
+      dy = -dy;
+      hitWall = true;
+    }
+
+    if (hitWall) {
+      colorIndex = (colorIndex + 1) % colors.length;
+      dvd.style.backgroundColor = colors[colorIndex];
+    }
+
+    x += dx;
+    y += dy;
+    dvd.style.left = x + 'px';
+    dvd.style.top = y + 'px';
+
+    requestAnimationFrame(animateDvd);
+  }
+
+  animateDvd();
+});
+
 const projects = {
   "1": { 
     title: "OpenGov API Worker", 
@@ -33,20 +100,20 @@ const projects = {
 const header = document.getElementById('header');
 const mainContent = document.getElementById('main-content');
 const overlay = document.getElementById('overlay');
-const titleEl = document.getElementById('overlay-title');
-const descEl = document.getElementById('overlay-desc');
-const githubEl = document.getElementById('overlay-github');
+const titleParent = document.getElementById('overlay-title');
+const descParent = document.getElementById('overlay-desc');
+const githubParent = document.getElementById('overlay-github');
 const videoContainer = document.getElementById('overlay-video-container');
-const iframeEl = document.getElementById('overlay-iframe');
-const imgEl = document.getElementById('overlay-img');
+const iframeParent = document.getElementById('overlay-iframe');
+const imgParent = document.getElementById('overlay-img');
 const backToProjectsBtn = document.getElementById('back-to-projects');
 
 const aboutBtn = document.getElementById('about-btn');
 const aboutOverlay = document.getElementById('about-overlay');
 const backFromAboutBtn = document.getElementById('back-from-about');
-const cascadeTexts = document.querySelectorAll('.cascade-text');
+const fadeText = document.querySelectorAll('.cascade-text');
 
-let currentCard = null;
+let activeCard = null;
 
 document.querySelectorAll('.project-card').forEach(card => {
   const id = card.getAttribute('data-id');
@@ -55,46 +122,46 @@ document.querySelectorAll('.project-card').forEach(card => {
 
 document.querySelectorAll('.project-card').forEach(card => {
   card.addEventListener('click', () => {
-    currentCard = card;
+    activeCard = card;
     
     const id = card.getAttribute('data-id');
     const data = projects[id];
     
     overlay.classList.add('active');
     
-    titleEl.textContent = data.title;
-    descEl.textContent = data.desc;
+    titleParent.textContent = data.title;
+    descParent.textContent = data.desc;
     
     if (data.youtube) {
-      iframeEl.src = data.youtube;
+      iframeParent.src = data.youtube;
       videoContainer.style.display = 'block';
     } else {
       videoContainer.style.display = 'none';
-      iframeEl.src = '';
+      iframeParent.src = '';
     }
 
     if (data.github === "NA") {
-      githubEl.removeAttribute('href');
-      githubEl.textContent = "GitHub link not available.";
-      githubEl.style.cssText = "background: transparent; color: #ef4444; padding: 0; pointer-events: none;";
+      githubParent.removeAttribute('href');
+      githubParent.textContent = "GitHub link not available.";
+      githubParent.style.cssText = "background: transparent; color: #ef4444; padding: 0; pointer-events: none;";
     } else {
-      githubEl.href = data.github;
-      githubEl.textContent = data.btnText;
-      githubEl.style.cssText = "";
+      githubParent.href = data.github;
+      githubParent.textContent = data.btnText;
+      githubParent.style.cssText = "";
     }
 
-    imgEl.src = data.image;
+    imgParent.src = data.image;
 
     document.body.style.overflow = 'hidden'; 
   });
 });
 
 function closeProject() {
-  if(!currentCard) return;
+  if(!activeCard) return;
   
   overlay.classList.remove('active');
   
-  iframeEl.src = '';
+  iframeParent.src = '';
   document.body.style.overflow = ''; 
 }
 
@@ -107,7 +174,7 @@ function openAboutMe() {
 
   setTimeout(() => {
     aboutOverlay.classList.add('active');
-    cascadeTexts.forEach(el => {
+    fadeText.forEach(el => {
       el.classList.remove('cascade-text');
       void el.offsetWidth;
       el.classList.add('cascade-text');
@@ -133,3 +200,15 @@ aboutBtn.addEventListener('click', (e) => {
   openAboutMe();
 });
 backFromAboutBtn.addEventListener('click', closeAboutMe);
+
+const themeToggle = document.getElementById('theme-toggle');
+const pageRoot = document.documentElement;
+
+themeToggle.addEventListener('click', () => {
+  pageRoot.classList.toggle('modern-theme');
+  if (pageRoot.classList.contains('modern-theme') && isDvdActive) {
+    isDvdActive = false;
+    const activeDvd = document.getElementById('dvd-logo');
+    if (activeDvd) activeDvd.remove();
+  }
+});
