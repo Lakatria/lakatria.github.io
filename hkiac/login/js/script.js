@@ -142,7 +142,7 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
         messageEl.innerText = "Sending link...";
 
         const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-            redirectTo: window.location.origin + '/login' 
+            redirectTo: window.location.origin + window.location.pathname
         });
 
         if (error) {
