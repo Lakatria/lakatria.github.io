@@ -5,6 +5,11 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
     const messageEl = document.getElementById('message');
 
     window.addEventListener('DOMContentLoaded', async () => {
+        if (window.location.hash && window.location.hash.includes('type=recovery')) {
+            toggleView('update');
+            return;
+        }
+        
         const { data: { session } } = await supabaseClient.auth.getSession();
         if (session) {
             window.location.href = "../";
@@ -15,16 +20,26 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
         messageEl.innerText = "";
         messageEl.style.color = "#ff4d88";
 
+        document.getElementById('signin-view').classList.add('hidden');
+        document.getElementById('signup-view').classList.add('hidden');
+        document.getElementById('forgot-view').classList.add('hidden');
+        document.getElementById('update-view').classList.add('hidden');
+
         if (view === 'signup') {
-            document.getElementById('signin-view').classList.add('hidden');
             document.getElementById('signup-view').classList.remove('hidden');
             document.getElementById('form-subtitle').innerText = "Join the island!";
+        } else if (view === 'forgot') {
+            document.getElementById('forgot-view').classList.remove('hidden');
+            document.getElementById('form-subtitle').innerText = "Let's get your account back!";
+        } else if (view === 'update') {
+            document.getElementById('update-view').classList.remove('hidden');
+            document.getElementById('form-subtitle').innerText = "Enter your new password.";
         } else {
-            document.getElementById('signup-view').classList.add('hidden');
             document.getElementById('signin-view').classList.remove('hidden');
             document.getElementById('form-subtitle').innerText = "Sign in to save your progress!";
         }
     }
+    
 
     async function handleSignUp() {
         try {
@@ -113,5 +128,53 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
         if (error) {
             messageEl.style.color = "#ff4d88";
             messageEl.innerText = error.message;
+        }
+    }
+
+    async function sendResetLink() {
+        const email = document.getElementById('forgot-email').value.trim();
+        if (!email) {
+            messageEl.innerText = "Please enter your email!";
+            return;
+        }
+
+        messageEl.style.color = "#555";
+        messageEl.innerText = "Sending link...";
+
+        const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+            redirectTo: window.location.origin + '/login' 
+        });
+
+        if (error) {
+            messageEl.style.color = "#ff4d88";
+            messageEl.innerText = error.message;
+        } else {
+            messageEl.style.color = "green";
+            messageEl.innerText = "Check your email for the reset link! 💌";
+        }
+    }
+
+    async function updatePassword() {
+        const newPassword = document.getElementById('new-password').value;
+        
+        if (newPassword.length < 6) {
+            messageEl.innerText = "Password must be at least 6 characters!";
+            return;
+        }
+
+        messageEl.style.color = "#555";
+        messageEl.innerText = "Updating password...";
+
+        const { data, error } = await supabaseClient.auth.updateUser({
+            password: newPassword
+        });
+
+        if (error) {
+            messageEl.style.color = "#ff4d88";
+            messageEl.innerText = error.message;
+        } else {
+            messageEl.style.color = "green";
+            messageEl.innerText = "Password updated! Redirecting...";
+            setTimeout(() => { window.location.href = "index"; }, 1500);
         }
     }

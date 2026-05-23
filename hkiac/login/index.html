@@ -23,6 +23,7 @@
             <input type="password" id="signin-password" class="auth-input" placeholder="Password">
         </div>
         <button class="btn-primary" onclick="handleSignIn()">Sign In</button>
+        <span class="toggle-link" onclick="toggleView('forgot')" style="font-size: 0.85em; margin-bottom: 10px;">Forgot password?</span>
         <span class="toggle-link" onclick="toggleView('signup')">New here? Create an account!</span>
         <hr style="border: 1px solid var(--pink-bg); margin: 15px 0;">
         <button class="social-btn" onclick="signInWithOAuth('google')">Sign in with Google</button>
@@ -43,6 +44,22 @@
         </div>
         <button class="btn-primary" onclick="handleSignUp()">Create Account</button>
         <span class="toggle-link" onclick="toggleView('signin')">Already have an account? Sign in.</span>
+    </div>
+
+    <div id="forgot-view" class="hidden">
+        <p style="font-size: 0.9em; color: #777; margin-bottom: 15px;">Enter your email to receive a reset link.</p>
+        <div class="input-group">
+            <input type="email" id="forgot-email" class="auth-input" placeholder="Email Address">
+        </div>
+        <button class="btn-primary" onclick="sendResetLink()">Send Reset Link</button>
+        <span class="toggle-link" onclick="toggleView('signin')">Nevermind, take me back.</span>
+    </div>
+    <div id="update-view" class="hidden">
+        <p style="font-size: 0.9em; color: #777; margin-bottom: 15px;">Enter your new password below.</p>
+        <div class="input-group">
+            <input type="password" id="new-password" class="auth-input" placeholder="New Password">
+        </div>
+        <button class="btn-primary" onclick="updatePassword()">Update Password</button>
     </div>
     <p id="message"></p>
     <a href="../" class="back-link">← Back</a>
