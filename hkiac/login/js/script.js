@@ -33,7 +33,7 @@ const SUPABASE_URL = 'https://lthfrmaeialtaxtzunai.supabase.co';
             document.getElementById('form-subtitle').innerText = "Let's get your account back!";
         } else if (view === 'update') {
             document.getElementById('update-view').classList.remove('hidden');
-            document.getElementById('form-subtitle').innerText = "Enter your new password.";
+            document.getElementById('form-subtitle').innerText = "That last password wasn't important anyway!";
         } else {
             document.getElementById('signin-view').classList.remove('hidden');
             document.getElementById('form-subtitle').innerText = "Sign in to save your progress!";
