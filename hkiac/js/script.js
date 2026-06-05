@@ -289,22 +289,23 @@ document.getElementById('new-char-input').addEventListener('keypress', function 
 
 function submitNewCharacter() {
     const inputName = document.getElementById('new-char-input').value.trim();
+    const matchedChar = validCharacters.find(char => char.toLowerCase() === inputName.toLowerCase());
     
-    if (validCharacters.includes(inputName)) {
-        const success = createGiftCard(inputName, false, "", false, true);
+    if (matchedChar) {
+        const success = createGiftCard(matchedChar, false, "", false, true);
         if (success) {
             closeModal('char-modal');
             document.getElementById('new-char-input').value = '';
         }
     } else if (inputName !== "") {
-        showCustomAlert(`Oops! Character "${inputName}" not found. Remember, names are case sensitive!`);
+        showCustomAlert(`Oops! Character "${inputName}" not found.`);
     }
 }
 
 function createGiftCard(characterName, isCompleted = false, savedGiftText = "", isLocked = false, isManualAdd = true) {
-    const existingChars = Array.from(document.querySelectorAll('#gifts-grid .item-name')).map(el => el.innerText);
+    const existingChars = Array.from(document.querySelectorAll('#gifts-grid .item-name')).map(el => el.innerText.toLowerCase());
     
-    if (existingChars.includes(characterName)) {
+    if (existingChars.includes(characterName.toLowerCase())) {
         if (isManualAdd) {
             showCustomAlert(`${characterName} is already on your gift list!`);
         }
