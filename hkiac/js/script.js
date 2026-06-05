@@ -4,6 +4,7 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_
 
 window.addEventListener('DOMContentLoaded', async () => {
     loadData();
+    fetchLatestVersion();
 
     const { data: { session } } = await supabaseClient.auth.getSession();
     
@@ -784,6 +785,25 @@ document.addEventListener('mouseover', (e) => {
         }
     }
 });
+
+async function fetchLatestVersion() {
+    try {
+        const { data, error } = await supabaseClient
+            .from('changelog')
+            .select('version')
+            .order('release_date', { ascending: false })
+            .limit(1);
+
+        if (!error && data && data.length > 0) {
+            const versionDisplay = document.getElementById('version-display');
+            if (versionDisplay) {
+                versionDisplay.innerText = `Version ${data[0].version}`;
+            }
+        }
+    } catch (err) {
+        console.error("Error fetching latest version:", err);
+    }
+}
 
 document.addEventListener('mousedown', (e) => {
     if (e.target.tagName.toLowerCase() === 'input') {
