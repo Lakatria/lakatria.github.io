@@ -94,6 +94,13 @@ const projects = {
     github: "https://github.com/Lakatria/RhythmWarrior",
     image: "media/project4.png",
     youtube: "https://www.youtube.com/embed/ctNe3rScuZU?si=SnJZVZJwQs1pxxbh"
+  },
+  "5": {
+    title: "Essential Holistic Therapies Website",
+    desc: "A website for a massage therapy business located in the United Kingdom. I was referred by a friend of mine to a client that was wanting to improve her WordPress website. Since I had used HTML/CSS before, I decided to fully convert her WordPress website into a much easier to manage HTML/CSS website. I also added a bunch of extra features and cleaned up the look of the site a lot. The client was very happy with the final product and I was able to learn a lot about web development in the process.",
+    btnText: "Open Website",
+    image: "media/project5.png",
+    github: "https://essentialholistictherapies.com/"
   }
 };
 

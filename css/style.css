@@ -58,18 +58,17 @@ main { padding: 0 5% 2rem 5%; }
   text-shadow: 2px 2px #FFFFFF;
 }
 
-.grid { 
-  display: grid; 
-  grid-template-columns: 1fr; 
-  gap: 2rem; 
-  max-width: 1200px; 
-  margin: 0 auto; 
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.modern-theme .grid {
+  justify-content: center;
 }
 
 .project-card { 
@@ -85,6 +84,14 @@ main { padding: 0 5% 2rem 5%; }
   background-color: #000080;
   background-size: cover;
   background-position: center;
+  width: 100%; /* Ensure cards are full-width on mobile */
+}
+
+@media (min-width: 768px) {
+  .project-card {
+    width: auto; /* Reset mobile width */
+    flex-basis: calc(50% - 1rem);
+  }
 }
 
 .project-card::before {
